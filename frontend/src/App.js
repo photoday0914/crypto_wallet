@@ -3,6 +3,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import EmptyPage from "./pages/Empty";
 import Landing from "./pages/Landing";
+import MainPage from "./pages/MainPage";
 
 function App() {
     return (
@@ -10,6 +11,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Landing />} />
                 <Route path="*" element={<EmptyPage />} />
+                <Route path="/mainpage" element={<MainPage />} />
             </Routes>
         </BrowserRouter>
     );
