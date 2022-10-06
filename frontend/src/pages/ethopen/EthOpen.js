@@ -1,17 +1,19 @@
-import "./PasswordPage.css";
+import "./EthOpen.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 import { useContext } from "react";
 import { encryptWithAES } from "../../service/utils";
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
 
 const PasswordPage = () => {
     const context = useContext(UserContext);
     const { password } = context;
     const [newValue, setNewValue] = useState("");
     const [confirmValue, setConfirmValue] = useState("");
-
+    let isWalletExist = localStorage.getItem("ETH_Private_Key");
     const navigate = useNavigate();
 
     const createWallet = () => {
@@ -20,10 +22,10 @@ const PasswordPage = () => {
             context.password = newValue;
             axios.get("http://localhost:3001/api/create-wallet").then((res) => {
                 console.log(res.data);
-                localStorage.setItem("Private Key", encryptWithAES(res.data.privateKey, newValue));
-                localStorage.setItem("Wallet Address", encryptWithAES(res.data.address, newValue));
+                localStorage.setItem("ETH_Private_Key", encryptWithAES(res.data.privateKey, newValue));
+                localStorage.setItem("ETH_Wallet_Address", encryptWithAES(res.data.address, newValue));
                 console.log(res.data.address);
-                navigate("/main");
+                navigate("/eth/wallet");
             });
             // console.log(password);
         }
@@ -31,32 +33,16 @@ const PasswordPage = () => {
 
     const enterPassword = () => {
         context.password = newValue;
-        navigate("/main");
+        navigate("/eth/wallet");
     };
-
-    // useEffect(() => {
-    //     return () => {
-    //         // console.log("Run Cleanup");
-    //     };
-    // }, []);
-
-    // if (localStorage.getItem("Private Key")) navigate("/main");
-    let isWalletExist = localStorage.getItem("Private Key");
-
+    
     return (
         <div className="layout">
-            <header className="navbar">
-                <div className="container">
-                    <div className="logo">Crypto Wallet</div>
-                </div>
-            </header>
-            <div className="text">
-                <br />
-                <br />
-                {!isWalletExist ? <h3>Create Your Password</h3> : <h3>Enter Your Password</h3>}
-            </div>
-            <section className="cards">
-                <div className="card">
+            <Header />
+            <section className="ethopencards">
+                <div className="ethopencard">
+                    {!isWalletExist ? <h3>Create Your Password</h3> : <h3>Enter Your Password</h3>}
+                    <br/>
                     <input
                         type="password"
                         required
@@ -65,8 +51,6 @@ const PasswordPage = () => {
                         name="value"
                         placeholder="New Password (8 characters min)"
                     />
-                    <br />
-                    <br />
                     {!isWalletExist ? (
                         <>
                             <input
@@ -78,17 +62,21 @@ const PasswordPage = () => {
                                 placeholder="Confirm Password"
                             />
                             <br />
-                            <br />
-                            <p>I have read and agree to the Terms of Use</p>
-                            <br />
+                            <p>Please Keep Your Password Safely.</p>
                             <br />
                             <button onClick={createWallet}>Create</button>
                         </>
                     ) : (
-                        <button onClick={enterPassword}>Enter</button>
+                        <>
+                            <br />
+                            <p>Please Keep Your Password Safely.</p>
+                            <br />
+                            <button onClick={enterPassword}>Enter</button>
+                        </>
                     )}
                 </div>
             </section>
+            <Footer />
         </div>
     );
 };

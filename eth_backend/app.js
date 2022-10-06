@@ -12,14 +12,6 @@ const port = process.env.PORT;
 app.use(cors());
 app.use(routes);
 
-// app.get("/", (req, res) => {
-//     res.send("Hello World!");
-// });
-
-// app.get("*", (req, res) => {
-//     res.status(400).send("No Page Found");
-// });
-
 if (process.env.NODE_ENV === "production") {
     //code here
     console.log("proudction mode is running!");

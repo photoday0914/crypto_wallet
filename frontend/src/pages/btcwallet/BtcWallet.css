@@ -10,7 +10,7 @@ body {
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
     line-height: 1.5;
-    background: linear-gradient(to bottom, #1d003b, #1e1e1e, #1e1e1e);
+    background: white;
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
@@ -21,7 +21,8 @@ img {
     max-width: 100%;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin-bottom: 1rem;
 }
 
@@ -31,69 +32,60 @@ h1, h2 {
     min-height: 100vh;
 }
 
-.topic {
+.ethmainframes {
     display: flex;
-    max-width: 75rem;
-    margin: 4rem auto;
-    padding: 0 2rem;
-    text-align: center;
-    color: #fff;
-    font-size: 60px;
-    font-weight: bold;
-}
-
-.landcards {
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
     max-width: 100rem;
-    margin: 4rem auto;
+    margin: 6rem auto;
     padding: 0 2rem;
     text-align: center;
 }
 
-.landcard {
+.string {
+    color: #fff;
+}
+
+.ethmainframe {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #202428;
     color: #fff;
+    width: 90rem;
     border-radius: 0.8rem;
-    margin: 1.25rem 1.25rem;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+    margin: 1.25rem 0.7rem;
     padding: 1.2rem 2rem;
-    width: 36rem;
-    height: 20rem;
 }
 
-.landcard button {
+.ethmainframe button {
     background: #2073e5;
     color: white;
     font: inherit;
-    font-size: 1rem;
+    font-size: 1.2rem;
     border: 1px solid black;
     padding: 0.3rem 0.5rem;
     border-radius: 0.8rem;
     cursor: pointer;
-    margin: 1rem auto;
-    width: 40%;
+    /* margin: 1rem; */
+    width: 20%;
+    margin-bottom: 1rem;
 }
 
-.landcard button:active {
+.ethmainframe button:active {
     background: #0e61d3;
     color: #fdfdfd;
 }
 
-.landcard form {
+.ethmainframe form {
     width: 100%;
 }
 
-.landcard input:hover,
-.landcard input:focus {
+.ethmainframe input:hover,
+.ethmainframe input:focus {
     outline: 2px solid #383c44;
 }
 
-.landcard label {
+.ethmainframe label {
     background: #282c34;
     width: 100%;
     border-radius: 0.8rem;
@@ -104,27 +96,13 @@ h1, h2 {
     margin-bottom: 1rem;
 }
 
-.landcard input {
-    background: #282c34;
+.ethmainframe input {
+    background: #fcfafb;
     border: hidden;
-    width: 100%;
+    width: 55%;
     border-radius: 0.8rem;
     font-size: 1.3rem;
-    color: #f1f1f1;
+    color: #070707;
     padding: 0.4rem 0.5rem;
     margin-bottom: 1rem;
-}
-
-footer {
-    margin-top: auto;
-    justify-content: flex-end;
-    padding-bottom: 0.07rem;
-    /* font-size: 0.7rem; */
-    color: #d4d4d4;
-}
-
-footer .landcontainer {
-    padding-bottom: 0.7rem;
-    text-align: center;
-    align-items: center;
 }
